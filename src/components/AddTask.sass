@@ -1,0 +1,124 @@
+$form-fontSize: 13px
+
+
+
+.addTask
+    max-width: 768px
+    height: 280px
+    overflow: hidden
+    position: relative
+    margin: 0 auto
+    &__dataContainer
+        position: absolute
+        top: 10px
+        left: 10px
+        height: 60px
+        width: 100px
+        .addTask__dataDay
+            position: absolute
+            top: 50%
+            left: 5px
+            transform: translateY(-50%)
+            font-size: 45px
+            font-weight: bold
+        .addTask__dataMonth
+            position: absolute
+            top: 2px
+            left: 40px
+            font-size: 26px
+            font-weight: bold
+        .addTask__dataYear
+            position: absolute
+            top: 30px
+            left: 40px
+            font-size: 22px
+    &__nameofDay
+        position: absolute
+        right: 10px
+        top: 20px
+        font-weight: normal
+        font-size: 24px
+        height: 30px
+    &__form.form
+        position: absolute
+        bottom: 10px
+        left: 50%
+        transform: translateX(-50%)
+        width: 95%
+        height: 180px
+        display: flex
+        flex-direction: column
+        .form__item
+            flex-basis: 25%
+            overflow: hidden
+            display: flex
+            flex-direction: row
+            .form__title
+                flex-basis: 50%
+                font-size: $form-fontSize
+                @media (min-width: 411px)
+                    font-size: 15px
+                @media (min-width: 568px)
+                    font-size: 18px
+                line-height: 37.5px
+                background-color: #2E2D33
+                text-align: left
+                padding-left: 10px
+            &--category
+                .form__categoryList
+                    flex-grow: 1
+                    display: flex
+                    flex-direction: row
+                    flex-wrap: wrap
+                    .form__singleCategory
+                        margin: 0.5px
+                        flex-basis: calc(50% - 1px)
+                        height: calc(50% - 1px)
+                        border: 0.2px solid black
+                        font-size: 13px
+                        @media (min-width: 411px)
+                            font-size: 14px
+                        @media (min-width: 568px)
+                            font-size: 17px
+                        background-color: #a7a7a7
+                        color: white
+                        cursor: pointer
+                        &:focus
+                            background-color: #2E2D33
+            &--priority
+                .form__prioritySelect
+                    margin: 0.5px
+                    flex-basis: calc(50% - 1px)
+                    height: calc(100% - 1px)
+                    cursor: pointer
+            &--date
+                .form__date
+                    margin: 0.5px
+                    flex-basis: calc(50% - 1px)
+                    height: calc(100% - 1px)
+                    cursor: pointer
+            &--text
+                .form__textInput
+                    margin: 1px 0 1px 1px
+                    flex-basis: calc(85% - 1px)
+                    padding-left: 10px  
+                    border: none
+                    background-color: #2E2D33    
+                    color: white  
+                    @media (min-width: 411px)
+                        font-size: 14px  
+                    @media (min-width: 568px)
+                            font-size: 18px         
+                    &::placeholder
+                        color: white
+                        opacity: 0.5
+                .form__button
+                    margin: 1px 1px 1px 0
+                    flex-grow: 1
+                    border: none
+                    background-color: #2E2D33
+                    color: white
+                    font-size: 40px
+                        
+
+        

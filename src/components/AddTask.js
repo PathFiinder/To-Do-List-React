@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import "./AddTask.css";
+import "./AddTask.sass";
 class AddTask extends Component {
+  date = new Date();
   state = {
     text: "",
     category: "",
-    startDate: "",
+    startDate: this.date.toISOString().slice(0, 10),
     priority: 1
   };
   date = new Date();
@@ -34,64 +35,65 @@ class AddTask extends Component {
   }
   render() {
     return (
-      <div className="AddTask">
-        <div className="AddTask__DataContainer">
-          <p className="AddTask__DataDay">
+      <div className="main__item addTask">
+        <div className="addTask__dataContainer">
+          <p className="addTask__dataDay">
             {this.date.toLocaleDateString().match(/^([^.]+)/g)}
           </p>
-          <p className="AddTask__DataMonth">
+          <p className="addTask__dataMonth">
             {this.date.toLocaleString("en-us", { month: "short" })}
           </p>
-          <p className="AddTask__DataYear">{this.date.getFullYear()}</p>
+          <p className="addTask__dataYear">{this.date.getFullYear()}</p>
         </div>
-        <h3 className="AddTask__NameOfDay">
+        <h2 className="addTask__nameofDay">
           {this.date.toLocaleString("en-us", { weekday: "long" })}
-        </h3>
-        <div className="AddTask__Form Form">
-          <div className="Form__Item Form__Item--Category">
-            <p className="Form__CategoryTitle">Category</p>
-            <ul className="Form__CategoryList">
-              <button className="Form__SingleCategory" value="House" onClick={this.handleChooseCategory}>
+        </h2>
+        <div className="addTask__form form">
+          <div className="form__item form__item--category">
+            <p className="form__title form__categoryTitle">Choose category: </p>
+            <ul className="form__categoryList">
+              <button className="form__singleCategory" value="House" onClick={this.handleChooseCategory}>
                 House
               </button>
-              <button className="Form__SingleCategory" value="Work" onClick={this.handleChooseCategory}>
+              <button className="form__singleCategory" value="Work" onClick={this.handleChooseCategory}>
                 Work
               </button>
-              <button className="Form__SingleCategory" value="Study" onClick={this.handleChooseCategory}>
+              <button className="form__singleCategory" value="Study" onClick={this.handleChooseCategory}>
                 Study
               </button>
-              <button className="Form__SingleCategory" value="Other" onClick={this.handleChooseCategory}>
+              <button className="form__singleCategory" value="Other" onClick={this.handleChooseCategory}>
                 Other
               </button>
             </ul>
           </div>
-          <div className="Form__Item">
-            <label htmlFor="priority">
-              <select name="priority" id="priority" value={this.state.priority} onChange={this.handleSelectPriority}>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
+          <div className="form__item form__item--priority">
+              <p className="form__title form__priorityTitle">Choose task priority: </p>
+              <select name="priority" id="priority" className="form__prioritySelect" value={this.state.priority} onChange={this.handleSelectPriority}>
+                <option value={1} className="priority__single priority__single--normal">normal</option>
+                <option value={2} className="priority__single priority__single--important">important</option>
+                <option value={3} className="priority__single priority__single--v-important">very important</option>
               </select>
-            </label>
           </div>
-          <div className="Form__Item Form__Item--Date">
-            <p className="Form__DateTitle">Choose Date:</p>
+          <div className="form__item form__item--date">
+            <p className="form__title form__dateTitle">Choose Date:</p>
             <input
               type="date"
-              className="Form__Date"
+              className="form__date"
               value={this.state.startDate}
               onChange={this.handleChangeDate}
+              min={this.date.toISOString().slice(0, 10)}
             />
           </div>
-          <div className="Form__Item Form__Item--Text">
+          <div className="form__item form__item--text">
             <input
               type="text"
-              className="Form__TextInput"
+              className="form__textInput"
               value={this.state.text}
               onChange={this.handleChangeValue}
+              placeholder="Add new task"
             />
             <button
-              className="Form__Button"
+              className="form__button"
               onClick={() =>
                 this.props.handleAddTask(
                   this.state.text,

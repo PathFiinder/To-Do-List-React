@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.sass";
 import AddTask from "./AddTask.js";
 import TaskList from "./TaskList.js";
 import ProgressBar from "./ProgressBar";
@@ -85,8 +85,8 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <h1>To-Do-List using React</h1>
+      <main className="main">
+        <h1 className="main__title">ToDo App </h1>
         <AddTask tasks={this.state.tasks} handleAddTask = {this.handleAddTask}/>
         <ProgressBar tasks = {this.state.tasks}/>
         <TaskList
@@ -94,7 +94,7 @@ class App extends Component {
           delete={this.handleDelete}
           finished={this.handleFinished}
         />
-      </>
+      </main>
     );
   }
 }
