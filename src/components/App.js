@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import AddTask from "./AddTask.js";
 import TaskList from "./TaskList.js";
+import ProgressBar from "./ProgressBar";
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends Component {
           id: 0,
           name: "Pierwszy task",
           startDate: "2019.10.07",
-          priority: 0,
+          priority: 1,
           active: true,
           finishDate: null,
           category: "House"
@@ -22,7 +23,7 @@ class App extends Component {
           id: 1,
           name: "Drugi task",
           startDate: "2019.10.06",
-          priority: 1,
+          priority: 2,
           active: true,
           finishDate: null,
           category: "Work"
@@ -31,7 +32,7 @@ class App extends Component {
           id: 2,
           name: "Trzeci task",
           startDate: "2019.10.05",
-          priority: 2,
+          priority: 3,
           active: false,
           finishDate: "7.10.2019, 17:48:31",
           category: "Study"
@@ -61,14 +62,14 @@ class App extends Component {
     });
   };
 
-  handleAddTask = (text,category,startDate) => {
+  handleAddTask = (text,category,startDate,priority) => {
 
     
     const task = {
       id: this.counterTasks,
       name: text,
       startDate: startDate,
-      priority: 2,
+      priority: priority,
       active: true,
       finishDate: null,
       category: category
@@ -87,6 +88,7 @@ class App extends Component {
       <>
         <h1>To-Do-List using React</h1>
         <AddTask tasks={this.state.tasks} handleAddTask = {this.handleAddTask}/>
+        <ProgressBar tasks = {this.state.tasks}/>
         <TaskList
           tasks={this.state.tasks}
           delete={this.handleDelete}

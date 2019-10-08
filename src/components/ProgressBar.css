@@ -1,0 +1,30 @@
+.ProgressBar{
+    width: 90%;
+    height: 20px;
+    border-radius: 25px;
+    border: 0.5px solid black;
+    margin: 10px auto 5px auto;
+    display: none;
+    flex-direction: row;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.ProgessBar__Item{
+    text-align: center;
+    height: 100%;
+    padding: 0;
+    line-height: calc(20px - 1px); /* -- border*/
+}
+
+.PogressBar__Item--one {
+    background-color: red;
+}
+
+.PogressBar__Item--two{
+    background-color: yellow;
+}
+
+.PogressBar__Item--three{
+    background-color: green;
+}

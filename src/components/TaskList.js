@@ -1,8 +1,31 @@
 import React from "react";
 import SingleTask from "./SingleTask.js";
 import "./TaskList.css";
+
 const TaskList = props => {
   const active = props.tasks.filter(task => task.active);
+  const finished = props.tasks.filter(task => !task.active);
+
+  if (finished.length >= 2) {
+    finished.sort((a, b) => {
+      if (a.finishDate < b.finishDate) {
+        return 1;
+      } else if (a.finishDate > b.finishDate) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+
+  if (active.length >= 2) {
+    active.sort((a, b) => {
+      a = a.name.toLowerCase();
+      b = b.name.toLowerCase();
+      if (a < b) return -1;
+      if (a > b) return 1;
+      return 0;
+    });
+  }
   const activeTasks = active.map(task => (
     <SingleTask
       key={task.id}
@@ -12,7 +35,6 @@ const TaskList = props => {
     />
   ));
 
-  const finished = props.tasks.filter(task => !task.active);
   const finishedTasks = finished.map(task => (
     <SingleTask
       key={task.id}
@@ -21,7 +43,6 @@ const TaskList = props => {
       finished={props.finished}
     />
   ));
-  
   return (
     <div className="TaskList">
       <div className="TaskList__Group TaskList__Group--Started">

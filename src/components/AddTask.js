@@ -4,7 +4,8 @@ class AddTask extends Component {
   state = {
     text: "",
     category: "",
-    startDate: ""
+    startDate: "",
+    priority: 1
   };
   date = new Date();
 
@@ -16,10 +17,21 @@ class AddTask extends Component {
 
   handleChangeDate = event => {
     this.setState({
-        startDate: event.target.value
-      });
-    };
-  
+      startDate: event.target.value
+    });
+  };
+
+  handleChooseCategory = event => {
+    this.setState ({
+      category: event.target.value
+    })
+  }
+
+  handleSelectPriority = event => {
+    this.setState({
+      priority: event.target.value*1
+    })
+  }
   render() {
     return (
       <div className="AddTask">
@@ -39,15 +51,37 @@ class AddTask extends Component {
           <div className="Form__Item Form__Item--Category">
             <p className="Form__CategoryTitle">Category</p>
             <ul className="Form__CategoryList">
-              <li className="Form__SingleCategory">House</li>
-              <li className="Form__SingleCategory">Work</li>
-              <li className="Form__SingleCategory">Study</li>
-              <li className="Form__SingleCategory">Other</li>
+              <button className="Form__SingleCategory" value="House" onClick={this.handleChooseCategory}>
+                House
+              </button>
+              <button className="Form__SingleCategory" value="Work" onClick={this.handleChooseCategory}>
+                Work
+              </button>
+              <button className="Form__SingleCategory" value="Study" onClick={this.handleChooseCategory}>
+                Study
+              </button>
+              <button className="Form__SingleCategory" value="Other" onClick={this.handleChooseCategory}>
+                Other
+              </button>
             </ul>
+          </div>
+          <div className="Form__Item">
+            <label htmlFor="priority">
+              <select name="priority" id="priority" value={this.state.priority} onChange={this.handleSelectPriority}>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+              </select>
+            </label>
           </div>
           <div className="Form__Item Form__Item--Date">
             <p className="Form__DateTitle">Choose Date:</p>
-            <input type="date" className="Form__Date" value={this.state.startDate} onChange={this.handleChangeDate}/>
+            <input
+              type="date"
+              className="Form__Date"
+              value={this.state.startDate}
+              onChange={this.handleChangeDate}
+            />
           </div>
           <div className="Form__Item Form__Item--Text">
             <input
@@ -56,7 +90,19 @@ class AddTask extends Component {
               value={this.state.text}
               onChange={this.handleChangeValue}
             />
-            <button className="Form__Button" onClick={() => this.props.handleAddTask(this.state.text,this.state.category,this.state.startDate)}>+</button>
+            <button
+              className="Form__Button"
+              onClick={() =>
+                this.props.handleAddTask(
+                  this.state.text,
+                  this.state.category,
+                  this.state.startDate,
+                  this.state.priority
+                )
+              }
+            >
+              +
+            </button>
           </div>
         </div>
       </div>
