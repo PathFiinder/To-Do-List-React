@@ -1,5 +1,3 @@
-To-do-List creating using React App
-
 Live: https://pathfiinder.github.io/To-Do-List-React/
 
 Tech used:
