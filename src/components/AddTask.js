@@ -23,16 +23,16 @@ class AddTask extends Component {
   };
 
   handleChooseCategory = event => {
-    this.setState ({
+    this.setState({
       category: event.target.value
-    })
-  }
+    });
+  };
 
   handleSelectPriority = event => {
     this.setState({
-      priority: event.target.value*1
-    })
-  }
+      priority: event.target.value * 1
+    });
+  };
   render() {
     return (
       <div className="main__item addTask">
@@ -52,27 +52,66 @@ class AddTask extends Component {
           <div className="form__item form__item--category">
             <p className="form__title form__categoryTitle">Choose category: </p>
             <ul className="form__categoryList">
-              <button className="form__singleCategory" value="House" onClick={this.handleChooseCategory}>
+              <button
+                className="form__singleCategory"
+                value="House"
+                onClick={this.handleChooseCategory}
+              >
                 House
               </button>
-              <button className="form__singleCategory" value="Work" onClick={this.handleChooseCategory}>
+              <button
+                className="form__singleCategory"
+                value="Work"
+                onClick={this.handleChooseCategory}
+              >
                 Work
               </button>
-              <button className="form__singleCategory" value="Study" onClick={this.handleChooseCategory}>
+              <button
+                className="form__singleCategory"
+                value="Study"
+                onClick={this.handleChooseCategory}
+              >
                 Study
               </button>
-              <button className="form__singleCategory" value="Other" onClick={this.handleChooseCategory}>
+              <button
+                className="form__singleCategory"
+                value="Other"
+                onClick={this.handleChooseCategory}
+              >
                 Other
               </button>
             </ul>
           </div>
           <div className="form__item form__item--priority">
-              <p className="form__title form__priorityTitle">Choose task priority: </p>
-              <select name="priority" id="priority" className="form__prioritySelect" value={this.state.priority} onChange={this.handleSelectPriority}>
-                <option value={1} className="priority__single priority__single--normal">normal</option>
-                <option value={2} className="priority__single priority__single--important">important</option>
-                <option value={3} className="priority__single priority__single--v-important">very important</option>
-              </select>
+            <p className="form__title form__priorityTitle">
+              Choose task priority:{" "}
+            </p>
+            <select
+              name="priority"
+              id="priority"
+              className="form__prioritySelect"
+              value={this.state.priority}
+              onChange={this.handleSelectPriority}
+            >
+              <option
+                value={1}
+                className="priority__single priority__single--normal"
+              >
+                normal
+              </option>
+              <option
+                value={2}
+                className="priority__single priority__single--important"
+              >
+                important
+              </option>
+              <option
+                value={3}
+                className="priority__single priority__single--v-important"
+              >
+                very important
+              </option>
+            </select>
           </div>
           <div className="form__item form__item--date">
             <p className="form__title form__dateTitle">Choose Date:</p>
@@ -82,6 +121,7 @@ class AddTask extends Component {
               value={this.state.startDate}
               onChange={this.handleChangeDate}
               min={this.date.toISOString().slice(0, 10)}
+              required="required"
             />
           </div>
           <div className="form__item form__item--text">
@@ -94,14 +134,30 @@ class AddTask extends Component {
             />
             <button
               className="form__button"
-              onClick={() =>
-                this.props.handleAddTask(
-                  this.state.text,
-                  this.state.category,
-                  this.state.startDate,
-                  this.state.priority
-                )
-              }
+              onClick={() => {
+                const { text, category } = this.state;
+                if (text.length > 2 && category !== "") {
+                  this.props.handleAddTask(
+                    this.state.text,
+                    this.state.category,
+                    this.state.startDate,
+                    this.state.priority
+                  );
+                  this.setState({
+                    text: "",
+                    category: "",
+                    startDate: this.date.toISOString().slice(0, 10),
+                    priority: 1
+                  });
+                } else if (text.length === 0
+                  ) {
+                  alert("Insert task name");
+                } else if (text.length > 0 && text.length <= 2) {
+                  alert("Task name have to be longer than two chars");
+                } else if (category === "") {
+                  alert("Choose catgeory");
+                }
+              }}
             >
               +
             </button>

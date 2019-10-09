@@ -1,10 +1,9 @@
 import React from "react";
-import "./ProgressBar.css";
+import "./ProgressBar.sass";
 
 const ProgressBar = props => {
   const checkActiveTasks = () => {
     const tasks = props.tasks.filter(task => task.active);
-    console.log(tasks);
     return tasks;
   };
   const active = checkActiveTasks();
@@ -21,33 +20,36 @@ const ProgressBar = props => {
   const totalCountOfPriority = nrOnePriority + nrTwoPriority + nrThreePriority;
 
   return (
-    <div
-      className="ProgressBar"
-      style={active.length !== 0 ? { display: "flex" } : {}}
-    >
+    <div className="main__item progressBar" style={active.length !== 0 ? {display: "block"} : {display: "none"}}>
+      <h3 className="progressBar__title">{active.length !== 0 ? "Number of task by priorities:" : "" }</h3>
       <div
-        className="ProgessBar__Item PogressBar__Item--one"
-        style={{
-          flexBasis: (nrOnePriority / totalCountOfPriority) * 100 + "%"
-        }}
+        className="progressBar__list"
+        style={active.length !== 0 ? { display: "flex" } : {}}
       >
-        {nrOnePriority !== 0 ? nrOnePriority : ""}
-      </div>
-      <div
-        className="ProgessBar__Item PogressBar__Item--two"
-        style={{
-          flexBasis: (nrTwoPriority / totalCountOfPriority) * 100 + "%"
-        }}
-      >
-        {nrTwoPriority !== 0 ? nrTwoPriority : ""}
-      </div>
-      <div
-        className="ProgessBar__Item PogressBar__Item--three"
-        style={{
-          flexBasis: (nrThreePriority / totalCountOfPriority) * 100 + "%"
-        }}
-      >
-        {nrThreePriority !== 0 ? nrThreePriority : ""}
+        <div
+          className="progressBar__item progressBar__item--one"
+          style={{
+            flexBasis: (nrOnePriority / totalCountOfPriority) * 100 + "%"
+          }}
+        >
+          {nrOnePriority !== 0 ? nrOnePriority : ""}
+        </div>
+        <div
+          className="progressBar__item progressBar__item--two"
+          style={{
+            flexBasis: (nrTwoPriority / totalCountOfPriority) * 100 + "%"
+          }}
+        >
+          {nrTwoPriority !== 0 ? nrTwoPriority : ""}
+        </div>
+        <div
+          className="progressBar__item progressBar__item--three"
+          style={{
+            flexBasis: (nrThreePriority / totalCountOfPriority) * 100 + "%"
+          }}
+        >
+          {nrThreePriority !== 0 ? nrThreePriority : ""}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,67 @@
+.list__singleItem.singleItem
+  height: 90px
+  overflow: hidden
+  position: relative
+  margin: 5px auto
+  text-align: start
+  border: 1px solid black
+  .singleItem__name
+    position: absolute
+    top: 10px
+    left: 5px
+    font-size: 14px
+    max-width: 60%
+    word-wrap: break-word
+    max-height: 40px
+    @media (min-width: 1024px)
+      max-height: 48px
+    overflow: scroll
+    font-weight: normal
+    &::-webkit-scrollbar 
+      width: 0px
+      background: transparent
+    &--bold
+      font-weight: bold
+  .singleItem__category
+    position: absolute
+    bottom: 15px
+    left: 5px
+    font-size: 14px
+    &--bold
+      font-weight: bold
+  .singleItem__startDate
+    position: absolute
+    right: 10px
+    top: 10px
+    width: 90px
+    font-size: 14px
+    max-height: 50px
+    overflow: scroll
+    overflow-x: hidden
+    &::-webkit-scrollbar 
+      width: 0px
+      background: transparent
+  .singleItem__buttons
+    position: absolute
+    bottom: 10px
+    right: 5px
+    height: 20px
+    display: flex
+    .singleItem__singleButton
+      border: none
+      background-color: transparent
+      font-size: 20px
+      &--delete
+        color: #CF7370
+      &--check
+        color: #7DDBB6
+  .singleItem__priority
+    width: 99%
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    height: 2px
+
+      
+      
