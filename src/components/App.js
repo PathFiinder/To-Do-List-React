@@ -12,7 +12,7 @@ class App extends Component {
       tasks: [
         {
           id: 0,
-          name: "Pierwszy task",
+          name: "Learn React Router",
           startDate: "2019.10.07",
           priority: 1,
           active: true,
@@ -21,7 +21,7 @@ class App extends Component {
         },
         {
           id: 1,
-          name: "Drugi task",
+          name: "Learn React Hooks",
           startDate: "2019.10.06",
           priority: 2,
           active: true,
@@ -30,7 +30,7 @@ class App extends Component {
         },
         {
           id: 2,
-          name: "Trzeci task",
+          name: "Create SPA using React Router",
           startDate: "2019.10.05",
           priority: 3,
           active: false,
@@ -62,9 +62,7 @@ class App extends Component {
     });
   };
 
-  handleAddTask = (text,category,startDate,priority) => {
-
-    
+  handleAddTask = (text, category, startDate, priority) => {
     const task = {
       id: this.counterTasks,
       name: text,
@@ -73,22 +71,22 @@ class App extends Component {
       active: true,
       finishDate: null,
       category: category
-    }
-    const newTasks = [...this.state.tasks].concat(task)
+    };
+    const newTasks = [...this.state.tasks].concat(task);
 
-  this.setState({
-    tasks: newTasks
-  })
+    this.setState({
+      tasks: newTasks
+    });
 
     this.counterTasks++;
-  }
+  };
 
   render() {
     return (
       <main className="main">
         <h1 className="main__title">ToDo App </h1>
-        <AddTask tasks={this.state.tasks} handleAddTask = {this.handleAddTask}/>
-        <ProgressBar tasks = {this.state.tasks}/>
+        <AddTask tasks={this.state.tasks} handleAddTask={this.handleAddTask} />
+        <ProgressBar tasks={this.state.tasks} />
         <TaskList
           tasks={this.state.tasks}
           delete={this.handleDelete}
