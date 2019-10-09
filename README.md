@@ -1,9 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live: https://pathfiinder.github.io/To-Do-List-React/
+
+Tech used:
+- HTML5 (BEM)
+- CSS3 (SASS)
+- React 
 
 ## Available Scripts
 
 In the project directory, you can run:
-
+### `npm install`
+ 
+Install project
+ 
 ### `npm start`
 
 Runs the app in the development mode.<br />
