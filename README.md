@@ -1,17 +1,15 @@
+App "To-do-List" created using React (Create React App)
+
 Live: https://pathfiinder.github.io/To-Do-List-React/
 
 Tech used:
 - HTML5 (BEM)
 - CSS3 (SASS)
-- React 
+- JavaScript(React) 
 
 ## Available Scripts
 
-In the project directory, you can run:
-### `npm install`
- 
-Install project
- 
+In the project directory, you can run: 
 ### `npm start`
 
 Runs the app in the development mode.<br />
