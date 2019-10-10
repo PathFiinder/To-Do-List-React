@@ -14,7 +14,7 @@ class App extends Component {
           id: 0,
           name: "Learn React Router",
           startDate: "2019.10.07",
-          priority: 1,
+          priority: 3,
           active: true,
           finishDate: null,
           category: "Study"
@@ -23,7 +23,7 @@ class App extends Component {
           id: 1,
           name: "Learn React Hooks",
           startDate: "2019.10.06",
-          priority: 1,
+          priority: 3,
           active: true,
           finishDate: null,
           category: "Study"
@@ -32,7 +32,7 @@ class App extends Component {
           id: 2,
           name: "Create SPA using React Router",
           startDate: "2019.10.05",
-          priority: 3,
+          priority: 2,
           active: false,
           finishDate: "10.10.2019, 17:48:31",
           category: "Study"
