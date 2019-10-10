@@ -17,16 +17,16 @@ class App extends Component {
           priority: 1,
           active: true,
           finishDate: null,
-          category: "House"
+          category: "Study"
         },
         {
           id: 1,
           name: "Learn React Hooks",
           startDate: "2019.10.06",
-          priority: 2,
+          priority: 1,
           active: true,
           finishDate: null,
-          category: "Work"
+          category: "Study"
         },
         {
           id: 2,
@@ -34,7 +34,7 @@ class App extends Component {
           startDate: "2019.10.05",
           priority: 3,
           active: false,
-          finishDate: "7.10.2019, 17:48:31",
+          finishDate: "10.10.2019, 17:48:31",
           category: "Study"
         }
       ]
